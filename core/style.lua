@@ -14,8 +14,6 @@ local function CreateStyle(self)
 
   self.Castbar = L.F.CreateCastBar(self)
 
-  self.AlternativePower = L.F.CreateAltPowerBar(self)
-
   self.Debuffs = L.F.CreateDebuffs(self)
   self.Buffs = L.F.CreateBuffs(self)
 

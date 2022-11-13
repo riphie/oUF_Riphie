@@ -10,7 +10,6 @@ core\elements\health.lua
 core\elements\power.lua
 core\elements\auras.lua
 core\elements\castbar.lua
-core\elements\altpowerbar.lua
 core\elements\raidicon.lua
 core\elements\readycheck.lua
 core\elements\setup.lua
