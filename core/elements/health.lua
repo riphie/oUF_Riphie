@@ -37,15 +37,16 @@ local function CreateHealthBar(self)
 
   L.F.CreateBackdrop(healthbar)
 
-  healthbar.colorTapping = self.cfg.healthbar.colorTapping
   healthbar.colorDisconnected = self.cfg.healthbar.colorDisconnected
-  healthbar.colorReaction = self.cfg.healthbar.colorReaction
-  healthbar.colorClass = self.cfg.healthbar.colorClass
-  healthbar.colorHealth = self.cfg.healthbar.colorHealth
   healthbar.colorThreat = self.cfg.healthbar.colorThreat
   healthbar.colorThreatInvers = self.cfg.healthbar.colorThreatInvers
-  healthbar.bg.multiplier = L.C.colors.bgMultiplier
+  healthbar.colorClass = self.cfg.healthbar.colorClass
+  healthbar.colorReaction = self.cfg.healthbar.colorReaction
+  healthbar.colorHealth = self.cfg.healthbar.colorHealth
+
   healthbar.frequentUpdates = self.cfg.healthbar.frequentUpdates
+
+  healthbar.bg.multiplier = L.C.colors.bgMultiplier
 
   healthbar.PostUpdate = PostUpdateHealth
 
