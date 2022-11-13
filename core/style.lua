@@ -17,7 +17,7 @@ local function CreateStyle(self)
   self.Debuffs = L.F.CreateDebuffs(self)
   self.Buffs = L.F.CreateBuffs(self)
 
-  self.RaidTargetIndicator = L.F.CreateRaidIcon(self)
+  self.RaidTargetIndicator = L.F.CreateRaidTargetIndicator(self)
 
   if self.settings.template == "raid" or self.settings.template == "party" then
     self.Range = { insideAlpha = 1, outsideAlpha = 0.5 }
