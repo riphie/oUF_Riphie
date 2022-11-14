@@ -11,7 +11,7 @@ core\elements\power.lua
 core\elements\auras.lua
 core\elements\castbar.lua
 core\elements\raidtargetindicator.lua
-core\elements\readycheck.lua
+core\elements\readycheckindicator.lua
 core\elements\setup.lua
 core\tags.lua
 core\style.lua

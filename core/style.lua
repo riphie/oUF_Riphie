@@ -21,7 +21,7 @@ local function CreateStyle(self)
 
   if self.settings.template == "raid" or self.settings.template == "party" then
     self.Range = { insideAlpha = 1, outsideAlpha = 0.5 }
-    self.ReadyCheckIndicator = L.F.CreateReadyCheck(self)
+    self.ReadyCheckIndicator = L.F.CreateReadyCheckIndicator(self)
   end
 end
 L.F.CreateStyle = CreateStyle
