@@ -14,7 +14,7 @@ end
 
 local function CustomTimeText(self, duration)
   if self.Time then
-    self.Time:SetText(("%.1f/%.1f"):format(self.channeling and duration or duration, self.max))
+    self.Time:SetText(("%.1f / %.1f"):format(self.channeling and duration or duration, self.max))
   end
 end
 
