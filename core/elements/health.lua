@@ -89,3 +89,64 @@ local function CreateHealthPercText(self)
   self:Tag(text, cfg.tag)
 end
 L.F.CreateHealthPercText = CreateHealthPercText
+
+local function CreateHealthPrediction(self)
+  if not self.cfg.absorbbar or not self.cfg.absorbbar.enabled then
+    return
+  end
+
+  local myBar = CreateFrame("StatusBar", nil, self.Health)
+  myBar:SetPoint("TOP")
+  myBar:SetPoint("BOTTOM")
+  myBar:SetPoint("LEFT", self.Health:GetStatusBarTexture(), "RIGHT")
+  myBar:SetWidth(200)
+  myBar:SetStatusBarTexture(L.C.textures.statusbar)
+  myBar:SetStatusBarColor(unpack(L.C.colors.healthbar.own))
+
+  local otherBar = CreateFrame("StatusBar", nil, self.Health)
+  otherBar:SetPoint("TOP")
+  otherBar:SetPoint("BOTTOM")
+  otherBar:SetPoint("LEFT", self.Health:GetStatusBarTexture(), "RIGHT")
+  otherBar:SetWidth(200)
+  otherBar:SetStatusBarTexture(L.C.textures.statusbar)
+  otherBar:SetStatusBarColor(unpack(L.C.colors.healthbar.other))
+
+  local absorbBar = CreateFrame("StatusBar", nil, self.Health)
+  absorbBar:SetPoint("TOP")
+  absorbBar:SetPoint("BOTTOM")
+  absorbBar:SetPoint("LEFT", self.Health:GetStatusBarTexture(), "RIGHT")
+  absorbBar:SetWidth(200)
+  absorbBar:SetStatusBarTexture(L.C.textures.absorb)
+  absorbBar:SetStatusBarColor(unpack(L.C.colors.healthbar.absorb))
+
+  local healAbsorbBar = CreateFrame("StatusBar", nil, self.Health)
+  healAbsorbBar:SetPoint("TOP")
+  healAbsorbBar:SetPoint("BOTTOM")
+  healAbsorbBar:SetPoint("RIGHT", self.Health:GetStatusBarTexture())
+  healAbsorbBar:SetWidth(200)
+  healAbsorbBar:SetStatusBarTexture(L.C.textures.absorb)
+  healAbsorbBar:SetReverseFill(true)
+
+  local overAbsorb = self.Health:CreateTexture(nil, "OVERLAY")
+  overAbsorb:SetPoint("TOP")
+  overAbsorb:SetPoint("BOTTOM")
+  overAbsorb:SetPoint("LEFT", self.Health, "RIGHT")
+  overAbsorb:SetWidth(10)
+
+  local overHealAbsorb = self.Health:CreateTexture(nil, "OVERLAY")
+  overHealAbsorb:SetPoint("TOP")
+  overHealAbsorb:SetPoint("BOTTOM")
+  overHealAbsorb:SetPoint("RIGHT", self.Health, "LEFT")
+  overHealAbsorb:SetWidth(10)
+
+  return {
+    myBar = myBar,
+    otherBar = otherBar,
+    absorbBar = absorbBar,
+    healAbsorbBar = healAbsorbBar,
+    overAbsorb = overAbsorb,
+    overHealAbsorb = overHealAbsorb,
+    maxOverflow = 1.05,
+  }
+end
+L.F.CreateHealthPrediction = CreateHealthPrediction
