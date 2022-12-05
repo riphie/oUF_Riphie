@@ -5,6 +5,7 @@ local function CreateStyle(self)
   L.F.SetupHeader(self)
 
   self.Health = L.F.CreateHealthBar(self)
+  self.HealthPrediction = L.F.CreateHealthPrediction(self)
   L.F.CreateHealthText(self)
   L.F.CreateHealthPercText(self)
   L.F.CreateNameText(self)
