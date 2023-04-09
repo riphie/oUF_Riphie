@@ -42,7 +42,7 @@ local function CreateBuffs(self)
   frame["growth-y"] = cfg.growthY
   frame.disableCooldown = cfg.disableCooldown
   frame.filter = cfg.filter
-  frame.CustomFilter = cfg.CustomFilter
+  frame.FilterAura = cfg.FilterAura
   frame.PostCreateButton = PostCreateButton
   frame:SetSize(CalcFrameSize(cfg.num, cfg.cols, cfg.size, cfg.size, cfg.spacing, 0))
 
@@ -66,7 +66,7 @@ local function CreateDebuffs(self)
   frame["growth-y"] = cfg.growthY
   frame.disableCooldown = cfg.disableCooldown
   frame.filter = cfg.filter
-  frame.CustomFilter = cfg.CustomFilter
+  frame.FilterAura = cfg.FilterAura
   frame.onlyShowPlayer = cfg.onlyShowPlayer
   frame.PostCreateButton = PostCreateButton
   frame:SetSize(CalcFrameSize(cfg.num, cfg.cols, cfg.size, cfg.size, cfg.spacing, 0))
