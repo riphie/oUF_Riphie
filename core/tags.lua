@@ -1,9 +1,10 @@
 local A, L = ...
 local oUF = L.oUF or oUF
 
+-- Up-value used global functions
 local floor = floor
 
--- tag method: oUF_Riphie:health
+-- oUF_Riphie:health: show s offline/dead status, and the current health points.
 oUF.Tags.Methods["oUF_Riphie:health"] = function(unit)
   if not UnitIsConnected(unit) then
     return "|cff999999Offline|r"
@@ -22,11 +23,9 @@ oUF.Tags.Methods["oUF_Riphie:health"] = function(unit)
 
   return L.F.NumberFormat(hpmin)
 end
-
--- tag event: oUF_Riphie:health
 oUF.Tags.Events["oUF_Riphie:health"] = "UNIT_HEALTH UNIT_MAXHEALTH UNIT_CONNECTION"
 
--- load tags from the config
+-- Load any tag methods and events from the config.
 if not L.C.tagMethods and type(L.C.tagMethods) ~= "table" then
   return
 end
@@ -41,6 +40,6 @@ for key, value in next, L.C.tagMethods do
   end
 end
 
--- add player regen to the unitless event tags
+-- Add player regen to the unitless event tags
 oUF.Tags.SharedEvents["PLAYER_REGEN_DISABLED"] = true
 oUF.Tags.SharedEvents["PLAYER_REGEN_ENABLED"] = true
