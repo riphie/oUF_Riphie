@@ -1,5 +1,6 @@
 local A, L = ...
 
+-- CreateNameText: create text for the unit name.
 local function CreateNameText(self)
   if not self.cfg.healthbar or not self.cfg.healthbar.name or not self.cfg.healthbar.name.enabled then
     return
