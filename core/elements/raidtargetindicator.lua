@@ -1,5 +1,6 @@
 local A, L = ...
 
+-- CreateRaidTargetIndicator: create a raid target indicator icon.
 local function CreateRaidTargetIndicator(self)
   if not self.cfg.raidicon or not self.cfg.raidicon.enabled then
     return
