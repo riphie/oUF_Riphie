@@ -1,7 +1,9 @@
 local A, L = ...
 
+-- Up-value used global functions
 local unpack = unpack
 
+-- CreatePowerBar: create a powerbar frame.
 local function CreatePowerBar(self)
   if not self.cfg.powerbar or not self.cfg.powerbar.enabled then
     return
@@ -26,6 +28,7 @@ local function CreatePowerBar(self)
 end
 L.F.CreatePowerBar = CreatePowerBar
 
+-- CreatePowerText: create text for the power.
 local function CreatePowerText(self)
   if not self.cfg.powerbar or not self.cfg.powerbar.power or not self.cfg.powerbar.power.enabled then
     return
@@ -35,9 +38,9 @@ local function CreatePowerText(self)
   local text = L.F.CreateText(self.Power, cfg.font, cfg.size, cfg.outline, cfg.align, cfg.noshadow)
 
   if cfg.points then
-    SetPoints(text, self.Power, cfg.points)
+    L.F.SetPoints(text, self.Power, cfg.points)
   else
-    SetPoint(text, self.Power, cfg.point)
+    L.F.SetPoint(text, self.Power, cfg.point)
   end
 
   self:Tag(text, cfg.tag)
