@@ -1,7 +1,9 @@
 local A, L = ...
 
+-- Up-value used global functions
 local unpack = unpack
 
+-- NumberFormat: abbreviate a number into billions, millions, and thousands.
 local function NumberFormat(v)
   if v > 1E10 then
     return (string.format("%.1f", v / 1E9)) .. "B"
@@ -21,9 +23,8 @@ local function NumberFormat(v)
 end
 L.F.NumberFormat = NumberFormat
 
+-- SetPoint: set the point for the frame, to the relative frame.
 local function SetPoint(self, relativeTo, point)
-  -- adjust the setpoint function to make it possible to reference a relativeTo
-  -- object that is set on runtime and it not available on config init
   local a, b, c, d, e = unpack(point)
 
   if not b then
@@ -36,13 +37,15 @@ local function SetPoint(self, relativeTo, point)
 end
 L.F.SetPoint = SetPoint
 
+-- SetPoints: set multiple points for the frame, to the relative frame.
 local function SetPoints(self, relativeTo, points)
   for i, point in next, points do
-    SetPoint(self, relativeTo, point)
+    L.F.SetPoint(self, relativeTo, point)
   end
 end
 L.F.SetPoints = SetPoints
 
+-- CreateBackdrop: create a backdrop frame to go behind the relative frame.
 local function CreateBackdrop(self, relativeTo)
   local backdrop = L.C.backdrop
   local bd = CreateFrame("Frame", nil, self, BackdropTemplateMixin and "BackdropTemplate")
@@ -58,15 +61,17 @@ local function CreateBackdrop(self, relativeTo)
 end
 L.F.CreateBackdrop = CreateBackdrop
 
+-- CreateIcon: create an icon texture.
 local function CreateIcon(self, layer, sublevel, size, point)
   local icon = self:CreateTexture(nil, layer, nil, sublevel)
   icon:SetSize(unpack(size))
-  SetPoint(icon, self, point)
+  L.F.SetPoint(icon, self, point)
 
   return icon
 end
 L.F.CreateIcon = CreateIcon
 
+-- CreateText: create a font string.
 local function CreateText(self, font, size, outline, align, noshadow)
   local text = self:CreateFontString(nil, "ARTWORK")
   text:SetFont(font or STANDARD_TEXT_FONT, size or 14, outline or "OUTLINE")
