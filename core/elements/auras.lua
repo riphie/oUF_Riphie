@@ -1,5 +1,7 @@
 local A, L = ...
 
+-- CalcFrameSize: calculate the width and height for a frame based on
+-- conditions.
 local function CalcFrameSize(numButtons, numCols, buttonWidth, buttonHeight, buttonMargin, framePadding)
   local numRows = ceil(numButtons / numCols)
   local frameWidth = numCols * buttonWidth + (numCols - 1) * buttonMargin + 2 * framePadding
@@ -8,6 +10,7 @@ local function CalcFrameSize(numButtons, numCols, buttonWidth, buttonHeight, but
   return frameWidth, frameHeight
 end
 
+-- PostCreateButton: callback function called after aura button is created.
 local function PostCreateButton(self, button)
   button:SetFrameStrata("LOW")
 
@@ -26,6 +29,7 @@ local function PostCreateButton(self, button)
   button.Count:SetPoint("BOTTOMRIGHT", self.size / 10, -self.size / 10)
 end
 
+-- CreateBuffs: create buffs frame.
 local function CreateBuffs(self)
   if not self.cfg.buffs or not self.cfg.buffs.enabled then
     return
@@ -50,6 +54,7 @@ local function CreateBuffs(self)
 end
 L.F.CreateBuffs = CreateBuffs
 
+-- CreateDebuffs: create debuffs frame.
 local function CreateDebuffs(self)
   if not self.cfg.debuffs or not self.cfg.debuffs.enabled then
     return
