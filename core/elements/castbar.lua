@@ -2,6 +2,7 @@ local A, L = ...
 
 local unpack = unpack
 
+-- PostCastStart: callback function called after a cast or channel has started.
 local function PostCastStart(self, unit)
   if self.notInterruptible then
     self:SetStatusBarColor(unpack(L.C.colors.castbar.shielded))
@@ -12,12 +13,15 @@ local function PostCastStart(self, unit)
   end
 end
 
+-- CustomTimeText: callback function called to set the format of the cast time
+-- text.
 local function CustomTimeText(self, duration)
   if self.Time then
     self.Time:SetText(("%.1f / %.1f"):format(self.channeling and duration or duration, self.max))
   end
 end
 
+-- CreateCastBar: create a castbar frame.
 local function CreateCastBar(self)
   if not self.cfg.castbar or not self.cfg.castbar.enabled then
     return
