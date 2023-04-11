@@ -1,7 +1,9 @@
 local A, L = ...
 
+-- Up-value used global functions
 local unpack = unpack
 
+-- ColorHealthbarOnThreat: color the healthbar based on the units threat.
 local function ColorHealthbarOnThreat(self, unit)
   if self.colorThreat and self.colorThreatInvers and unit and UnitThreatSituation("player", unit) == 3 then
     self:SetStatusBarColor(unpack(L.C.colors.healthbar.threatInvers))
@@ -12,10 +14,12 @@ local function ColorHealthbarOnThreat(self, unit)
   end
 end
 
+-- PostUpdateHealth: callback function called after the health has been updated.
 local function PostUpdateHealth(self, unit, min, max)
   ColorHealthbarOnThreat(self, unit)
 end
 
+-- CreateHealthBar: create a healthbar frame.
 local function CreateHealthBar(self)
   local healthbar = CreateFrame("StatusBar", nil, self)
   healthbar:SetStatusBarTexture(L.C.textures.statusbar)
@@ -54,6 +58,7 @@ local function CreateHealthBar(self)
 end
 L.F.CreateHealthBar = CreateHealthBar
 
+-- CreateHealthText: create text for the health.
 local function CreateHealthText(self)
   if not self.cfg.healthbar or not self.cfg.healthbar.health or not self.cfg.healthbar.health.enabled then
     return
@@ -72,6 +77,7 @@ local function CreateHealthText(self)
 end
 L.F.CreateHealthText = CreateHealthText
 
+-- CreateHealthPercText: create text for the health percentage.
 local function CreateHealthPercText(self)
   if not self.cfg.healthbar or not self.cfg.healthbar.healthperc or not self.cfg.healthbar.healthperc.enabled then
     return
@@ -90,6 +96,7 @@ local function CreateHealthPercText(self)
 end
 L.F.CreateHealthPercText = CreateHealthPercText
 
+-- CreateHealthPrediction: create frames for health predictions.
 local function CreateHealthPrediction(self)
   if not self.cfg.absorbbar or not self.cfg.absorbbar.enabled then
     return
