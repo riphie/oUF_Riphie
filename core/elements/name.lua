@@ -15,5 +15,7 @@ local function CreateNameText(self)
   end
 
   self:Tag(text, cfg.tag)
+
+  return text
 end
 L.F.CreateNameText = CreateNameText

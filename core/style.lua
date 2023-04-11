@@ -8,7 +8,7 @@ local function CreateStyle(self)
   self.HealthPrediction = L.F.CreateHealthPrediction(self)
   L.F.CreateHealthText(self)
   L.F.CreateHealthPercText(self)
-  L.F.CreateNameText(self)
+  self.Name = L.F.CreateNameText(self)
 
   self.Power = L.F.CreatePowerBar(self)
   L.F.CreatePowerText(self)
