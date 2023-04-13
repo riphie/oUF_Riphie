@@ -1,5 +1,6 @@
 local A, L = ...
 
+-- CreateStyle: create the full unit frame.
 local function CreateStyle(self)
   L.F.SetupFrame(self)
   L.F.SetupHeader(self)
