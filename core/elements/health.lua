@@ -52,7 +52,7 @@ local function CreateHealthBar(self)
 
   healthbar.bg.multiplier = L.C.colors.bgMultiplier
 
-  healthbar.PostUpdate = PostUpdateHealth
+  healthbar.PostUpdateColor = self.cfg.healthbar.PostUpdateColor or PostUpdateHealth
 
   return healthbar
 end
