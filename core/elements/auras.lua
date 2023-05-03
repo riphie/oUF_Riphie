@@ -1,5 +1,21 @@
 local A, L = ...
 
+-- CreateAuraTimer: creates the timer text for an aura.
+local function CreateAuraTimer(self, elapsed)
+  self.elapsed = (self.elapsed or 0) + elapsed
+
+  if self.elapsed >= 0.1 then
+    local timeLeft = self.timeLeft - GetTime()
+    if timeLeft > 0 then
+      self.Cooldown:SetText(L.F.TimerFormat(timeLeft))
+    else
+      self:SetScript("OnUpdate", nil)
+      self.Cooldown:SetText("")
+    end
+    self.elapsed = 0
+  end
+end
+
 -- CalcFrameSize: calculate the width and height for a frame based on
 -- conditions.
 local function CalcFrameSize(numButtons, numCols, buttonWidth, buttonHeight, buttonMargin, framePadding)
@@ -22,11 +38,27 @@ local function PostCreateButton(self, button)
 
   button.Icon:SetTexCoord(0.1, 0.9, 0.1, 0.9)
 
+  button.Cooldown = L.F.CreateText(button, STANDARD_TEXT_FONT, 14, "OUTLINE", "CENTER", true)
+  button.Cooldown:ClearAllPoints()
+  button.Cooldown:SetPoint("TOP", button, 0, 4)
+
   button.Count:SetFont(STANDARD_TEXT_FONT, self.size / 1.65, "OUTLINE")
   button.Count:SetShadowColor(0, 0, 0, 0.6)
   button.Count:SetShadowOffset(1, -1)
   button.Count:ClearAllPoints()
   button.Count:SetPoint("BOTTOMRIGHT", self.size / 10, -self.size / 10)
+end
+
+-- PostUpdateButton: callback function called after the aura button is updated.
+local function PostUpdateButton(self, button, unit, data)
+  if data.duration and data.duration > 0 then
+    button.timeLeft = data.expirationTime
+    button:SetScript("OnUpdate", CreateAuraTimer)
+    button.Cooldown:Show()
+  else
+    button:SetScript("OnUpdate", nil)
+    button.Cooldown:Hide()
+  end
 end
 
 -- CreateBuffs: create buffs frame.
@@ -48,6 +80,7 @@ local function CreateBuffs(self)
   frame.filter = cfg.filter
   frame.FilterAura = cfg.FilterAura
   frame.PostCreateButton = PostCreateButton
+  frame.PostUpdateButton = PostUpdateButton
   frame:SetSize(CalcFrameSize(cfg.num, cfg.cols, cfg.size, cfg.size, cfg.spacing, 0))
 
   return frame
@@ -74,6 +107,7 @@ local function CreateDebuffs(self)
   frame.FilterAura = cfg.FilterAura
   frame.onlyShowPlayer = cfg.onlyShowPlayer
   frame.PostCreateButton = PostCreateButton
+  frame.PostUpdateButton = PostUpdateButton
   frame:SetSize(CalcFrameSize(cfg.num, cfg.cols, cfg.size, cfg.size, cfg.spacing, 0))
 
   return frame
