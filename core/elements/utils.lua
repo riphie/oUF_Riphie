@@ -102,8 +102,6 @@ local function CreateText(self, font, size, outline, align, noshadow)
     text:SetShadowOffset(1, -1)
   end
 
-  -- fix some wierd bug
-  text:SetText("Bugfix")
   text:SetMaxLines(1)
   text:SetHeight(text:GetStringHeight())
 
