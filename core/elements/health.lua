@@ -18,7 +18,7 @@ end
 -- updated.
 local function PostUpdateColor(self, unit)
   local npcID = tonumber(strmatch((UnitGUID(unit) or ""), "%-(%d-)%-%x-$"))
-  local customUnit = L.C.customUnits and L.C.customUnits[npcID]
+  local customUnit = L.C.NamePlateCustomUnits and L.C.NamePlateCustomUnits[npcID]
 
   local tap = UnitIsTapDenied(unit) and not UnitPlayerControlled(unit)
 
