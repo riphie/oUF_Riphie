@@ -3,8 +3,8 @@ local A, L = ...
 -- Up-value used global functions
 local unpack = unpack
 
--- ColorHealthbarOnThreat: color the healthbar based on the units threat.
-local function ColorHealthbarOnThreat(self, unit)
+-- PostUpdate: callback function called after the health has been updated.
+local function PostUpdate(self, unit, min, max)
   if self.colorThreat and self.colorThreatInvers and unit and UnitThreatSituation("player", unit) == 3 then
     self:SetStatusBarColor(unpack(L.C.colors.healthbar.threatInvers))
     self.bg:SetVertexColor(unpack(L.C.colors.healthbar.threatInversBG))
@@ -14,10 +14,46 @@ local function ColorHealthbarOnThreat(self, unit)
   end
 end
 
--- PostUpdateHealth: callback function called after the health has been updated.
-local function PostUpdateHealth(self, unit, min, max)
-  ColorHealthbarOnThreat(self, unit)
+-- PostUpdateColor: callback function called after the health color has been
+-- updated.
+local function PostUpdateColor(self, unit)
+  local npcID = tonumber(strmatch((UnitGUID(unit) or ""), "%-(%d-)%-%x-$"))
+  local customUnit = L.C.customUnits and L.C.customUnits[npcID]
+
+  local tap = UnitIsTapDenied(unit) and not UnitPlayerControlled(unit)
+
+  local player = UnitIsPlayer(unit)
+  local class = select(2, UnitClass(unit))
+  local ccolor = oUF.colors.class[class] or 1, 1, 1
+
+  local status = UnitThreatSituation("player", unit) or false
+  local tcolor = oUF.colors.threat[status] or 1, 1, 1
+
+  local reaction = UnitReaction(unit, "player")
+  local rcolor = oUF.colors.reaction[reaction] or 1, 1, 1
+
+  local r, g, b
+
+  if customUnit then
+    r, g, b = unpack(customUnit)
+  elseif player and (reaction and reaction >= 5) then
+    r, g, b = unpack(ccolor)
+  elseif player and (reaction and reaction <= 4) then
+    r, g, b = unpack(ccolor)
+  elseif tap then
+    r, g, b = 0.3, 0.3, 0.3
+  elseif status then
+    r, g, b = unpack(tcolor)
+  else
+    r, g, b = unpack(rcolor)
+  end
+
+  if r or g or b then
+    self:SetStatusBarColor(r, g, b)
+    self.bg:SetVertexColor(r * 0.3, g * 0.3, b * 0.3)
+  end
 end
+L.F.UpdateNameplateColor = UpdateNameplateColor
 
 -- CreateHealthBar: create a healthbar frame.
 local function CreateHealthBar(self)
@@ -52,7 +88,11 @@ local function CreateHealthBar(self)
 
   healthbar.bg.multiplier = L.C.colors.bgMultiplier
 
-  healthbar.PostUpdateColor = self.cfg.healthbar.PostUpdateColor or PostUpdateHealth
+  if self.settings.template == "nameplate" then
+    healthbar.PostUpdateColor = PostUpdateColor
+  else
+    healthbar.PostUpdate = PostUpdate
+  end
 
   return healthbar
 end
