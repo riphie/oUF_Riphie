@@ -38,15 +38,17 @@ local function PostCreateButton(self, button)
 
   button.Icon:SetTexCoord(0.1, 0.9, 0.1, 0.9)
 
-  button.Cooldown = L.F.CreateText(button, STANDARD_TEXT_FONT, 14, "OUTLINE", "CENTER", true)
-  button.Cooldown:ClearAllPoints()
-  button.Cooldown:SetPoint("TOP", button, 0, 4)
+  local duration = self.cfg.duration
 
-  button.Count:SetFont(STANDARD_TEXT_FONT, self.size / 1.65, "OUTLINE")
-  button.Count:SetShadowColor(0, 0, 0, 0.6)
-  button.Count:SetShadowOffset(1, -1)
+  button.Cooldown = L.F.CreateText(button, duration.font, duration.size, duration.outline, duration.align, duration.noshadow)
+  button.Cooldown:ClearAllPoints()
+  L.F.SetPoint(button.Cooldown, button, duration.point)
+
+  local count = self.cfg.count
+
+  button.Count = L.F.CreateText(button, count.font, count.size, count.outline, count.align, count.noshadow)
   button.Count:ClearAllPoints()
-  button.Count:SetPoint("BOTTOMRIGHT", self.size / 10, -self.size / 10)
+  L.F.SetPoint(button.Count, button, count.point)
 end
 
 -- PostUpdateButton: callback function called after the aura button is updated.
@@ -69,6 +71,7 @@ local function CreateBuffs(self)
 
   local cfg = self.cfg.buffs
   local frame = CreateFrame("Frame", nil, self)
+  frame.cfg = cfg
   L.F.SetPoint(frame, self, cfg.point)
   frame.num = cfg.num
   frame.size = cfg.size
@@ -95,6 +98,7 @@ local function CreateDebuffs(self)
 
   local cfg = self.cfg.debuffs
   local frame = CreateFrame("Frame", nil, self)
+  frame.cfg = cfg
   L.F.SetPoint(frame, self, cfg.point)
   frame.num = cfg.num
   frame.size = cfg.size
