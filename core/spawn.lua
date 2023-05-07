@@ -36,32 +36,33 @@ end
 if L.F.CreatePartyStyle then
   oUF:RegisterStyle(A .. "Party", L.F.CreatePartyStyle)
   oUF:SetActiveStyle(A .. "Party")
-  local header = oUF:SpawnHeader(
-    A .. "PartyHeader",
-    L.C.party.setup.template,
-    L.C.party.setup.visibility,
-    "showPlayer",
-    L.C.party.setup.showPlayer,
-    "showSolo",
-    L.C.party.setup.showSolo,
-    "showParty",
-    L.C.party.setup.showParty,
-    "showRaid",
-    L.C.party.setup.showRaid,
-    "point",
-    L.C.party.setup.point,
-    "xOffset",
-    L.C.party.setup.xOffset,
-    "yOffset",
-    L.C.party.setup.yOffset,
-    "oUF-initialConfigFunction",
-    ([[
-      L.F.SetWidth(self, %d)
-      L.F.SetHeight(self, %d)
+  oUF
+    :SpawnHeader(
+      A .. "PartyHeader",
+      L.C.party.setup.template,
+      L.C.party.setup.visibility,
+      "showPlayer",
+      L.C.party.setup.showPlayer,
+      "showSolo",
+      L.C.party.setup.showSolo,
+      "showParty",
+      L.C.party.setup.showParty,
+      "showRaid",
+      L.C.party.setup.showRaid,
+      "point",
+      L.C.party.setup.point,
+      "xOffset",
+      L.C.party.setup.xOffset,
+      "yOffset",
+      L.C.party.setup.yOffset,
+      "oUF-initialConfigFunction",
+      ([[
+      self:SetWidth(%d)
+      self:SetHeight(%d)
       self:GetParent():SetScale(%f)
     ]]):format(L.C.party.size[1], L.C.party.size[2], L.C.party.scale)
-  )
-  L.F.SetPoint(header, unpack(L.C.party.point))
+    )
+    :SetPoint(unpack(L.C.party.point))
 end
 
 if L.F.CreateBossStyle then
@@ -74,16 +75,15 @@ if L.F.CreateBossStyle then
     boss[i] = oUF:Spawn("boss" .. i, A .. "Boss" .. i)
 
     if i == 1 then
-      L.F.SetPoint(boss[i], unpack(L.C.boss.point))
+      local a, b, c, d, e = unpack(L.C.boss.point)
+      L.F.SetPoint(boss[i], b, { a, c, d, e })
     else
-      L.F.SetPoint(
-        boss[i],
+      L.F.SetPoint(boss[i], boss[i - 1], {
         L.C.boss.setup.point,
-        boss[i - 1],
         L.C.boss.setup.relativePoint,
         L.C.boss.setup.xOffset,
-        L.C.boss.setup.yOffset
-      )
+        L.C.boss.setup.yOffset,
+      })
     end
   end
 end
@@ -99,35 +99,36 @@ if L.F.CreateRaidStyle then
   oUF:SetActiveStyle(A .. "Raid")
 
   for i = 1, NUM_RAID_GROUPS do
-    local header = oUF:SpawnHeader(
-      A .. "RaidHeader" .. i,
-      L.C.raid.setup.template,
-      L.C.raid.setup.visibility,
-      "showPlayer",
-      L.C.raid.setup.showPlayer,
-      "showSolo",
-      L.C.raid.setup.showSolo,
-      "showParty",
-      L.C.raid.setup.showParty,
-      "showRaid",
-      L.C.raid.setup.showRaid,
-      "point",
-      L.C.raid.setup.point,
-      "xOffset",
-      L.C.raid.setup.xOffset,
-      "yOffset",
-      L.C.raid.setup.yOffset,
-      "groupFilter",
-      tostring(i),
-      "unitsPerColumn",
-      5,
-      "oUF-initialConfigFunction",
-      ([[
-          L.F.SetWidth(self, %d)
-          L.F.SetHeight(self, %d)
+    oUF
+      :SpawnHeader(
+        A .. "RaidHeader" .. i,
+        L.C.raid.setup.template,
+        L.C.raid.setup.visibility,
+        "showPlayer",
+        L.C.raid.setup.showPlayer,
+        "showSolo",
+        L.C.raid.setup.showSolo,
+        "showParty",
+        L.C.raid.setup.showParty,
+        "showRaid",
+        L.C.raid.setup.showRaid,
+        "point",
+        L.C.raid.setup.point,
+        "xOffset",
+        L.C.raid.setup.xOffset,
+        "yOffset",
+        L.C.raid.setup.yOffset,
+        "groupFilter",
+        tostring(i),
+        "unitsPerColumn",
+        5,
+        "oUF-initialConfigFunction",
+        ([[
+          self:SetWidth(%d)
+          self:SetHeight(%d)
           self:GetParent():SetScale(%f)
         ]]):format(L.C.raid.size[1], L.C.raid.size[2], L.C.raid.scale)
-    )
-    L.F.SetPoint(header, unpack(L.C.raid.points[i])) --config needs to provide 8 point tables, one for each raid group
+      )
+      :SetPoint(unpack(L.C.raid.points[i])) --config needs to provide 8 point tables, one for each raid group
   end
 end

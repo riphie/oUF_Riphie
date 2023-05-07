@@ -11,7 +11,7 @@ local function CreatePowerBar(self)
 
   local powerbar = CreateFrame("StatusBar", nil, self)
   powerbar:SetStatusBarTexture(L.C.textures.statusbar)
-  L.F.SetSize(powerbar, unpack(self.cfg.powerbar.size)
+  L.F.SetSize(powerbar, unpack(self.cfg.powerbar.size))
   L.F.SetPoint(powerbar, self, self.cfg.powerbar.point)
 
   local bg = powerbar:CreateTexture(nil, "BACKGROUND")

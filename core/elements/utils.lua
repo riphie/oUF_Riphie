@@ -68,9 +68,9 @@ local function SetPoint(self, relativeTo, point)
   if not b then
     self:SetPoint(a)
   elseif b and type(b) == "string" and not _G[b] then
-    PixelUtil.SetPoint(self, a, relativeTo, b, c, d, 1, 1)
+    PixelUtil.SetPoint(self, a, relativeTo, b, c or 0, d or 0, 0, 0)
   else
-    PixelUtil.SetPoint(self, a, b, c, d, e, 1, 1)
+    PixelUtil.SetPoint(self, a, b or nil, c or nil, d or 0, e or 0, 0, 0)
   end
 end
 L.F.SetPoint = SetPoint
@@ -89,8 +89,8 @@ local function CreateBackdrop(self, relativeTo)
   local bd = CreateFrame("Frame", nil, self, BackdropTemplateMixin and "BackdropTemplate")
 
   bd:SetFrameLevel(self:GetFrameLevel() - 1 or 0)
-  L.F.SetPoint(bd, "TOPLEFT", relativeTo or self, "TOPLEFT", -backdrop.inset, backdrop.inset)
-  L.F.SetPoint(bd, "BOTTOMRIGHT", relativeTo or self, "BOTTOMRIGHT", backdrop.inset, -backdrop.inset)
+  L.F.SetPoint(bd, relativeTo or self, { "TOPLEFT", "TOPLEFT", -backdrop.inset, backdrop.inset })
+  L.F.SetPoint(bd, relativeTo or self, { "BOTTOMRIGHT", "BOTTOMRIGHT", backdrop.inset, -backdrop.inset })
   bd:SetBackdrop(backdrop)
   bd:SetBackdropColor(unpack(backdrop.bgColor))
   bd:SetBackdropBorderColor(unpack(backdrop.edgeColor))
@@ -121,7 +121,7 @@ local function CreateText(self, font, size, outline, align, noshadow)
   end
 
   text:SetMaxLines(1)
-  L.F.SetHeight(text, text:GetStringHeight)
+  L.F.SetHeight(text, text:GetStringHeight())
 
   return text
 end

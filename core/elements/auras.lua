@@ -32,8 +32,8 @@ local function PostCreateButton(self, button)
 
   local border = button:CreateTexture(nil, "BACKGROUND")
   border:SetColorTexture(0, 0, 0)
-  L.F.SetPoint(border, "TOPLEFT", -1, 1)
-  L.F.SetPoint(border, "BOTTOMRIGHT", 1, -1)
+  L.F.SetPoint(border, button, { "TOPLEFT", "TOPLEFT", -1, 1 })
+  L.F.SetPoint(border, button, { "BOTTOMRIGHT", "BOTTOMRIGHT", 1, -1 })
   button.border = border
 
   button.Icon:SetTexCoord(0.1, 0.9, 0.1, 0.9)
