@@ -49,6 +49,12 @@ local function SetWidth(self, width)
 end
 L.F.SetWidth = SetWidth
 
+-- SetHeight: set the height for the frame.
+local function SetHeight(self, height)
+  PixelUtil.SetHeight(self, height, 1, 1)
+end
+L.F.SetHeight = SetHeight
+
 -- SetSize: set the size for the frame.
 local function SetSize(self, width, height)
   PixelUtil.SetSize(self, width, height, 1, 1)
