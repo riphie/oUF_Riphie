@@ -43,6 +43,12 @@ local function TimerFormat(v)
 end
 L.F.TimerFormat = TimerFormat
 
+-- SetSize: set the size for the frame.
+local function SetSize(self, width, height)
+  PixelUtil.SetSize(self, width, height, 1, 1)
+end
+L.F.SetSize = SetSize
+
 -- SetPoint: set the point for the frame, to the relative frame.
 local function SetPoint(self, relativeTo, point)
   local a, b, c, d, e = unpack(point)
