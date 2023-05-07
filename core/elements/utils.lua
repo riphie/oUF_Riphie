@@ -121,7 +121,7 @@ local function CreateText(self, font, size, outline, align, noshadow)
   end
 
   text:SetMaxLines(1)
-  text:SetHeight(text:GetStringHeight())
+  L.F.SetHeight(text, text:GetStringHeight)
 
   return text
 end

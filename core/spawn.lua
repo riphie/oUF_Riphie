@@ -57,7 +57,7 @@ if L.F.CreatePartyStyle then
     "oUF-initialConfigFunction",
     ([[
       L.F.SetWidth(self, %d)
-      self:SetHeight(%d)
+      L.F.SetHeight(self, %d)
       self:GetParent():SetScale(%f)
     ]]):format(L.C.party.size[1], L.C.party.size[2], L.C.party.scale)
   )
@@ -124,7 +124,7 @@ if L.F.CreateRaidStyle then
       "oUF-initialConfigFunction",
       ([[
           L.F.SetWidth(self, %d)
-          self:SetHeight(%d)
+          L.F.SetHeight(self, %d)
           self:GetParent():SetScale(%f)
         ]]):format(L.C.raid.size[1], L.C.raid.size[2], L.C.raid.scale)
     )
