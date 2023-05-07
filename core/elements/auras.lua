@@ -85,7 +85,7 @@ local function CreateBuffs(self)
   frame.FilterAura = cfg.FilterAura
   frame.PostCreateButton = PostCreateButton
   frame.PostUpdateButton = PostUpdateButton
-  frame:SetSize(CalcFrameSize(cfg.num, cfg.cols, cfg.size, cfg.size, cfg.spacing, 0))
+  L.F.SetSize(frame, CalcFrameSize(cfg.num, cfg.cols, cfg.size, cfg.size, cfg.spacing, 0))
 
   return frame
 end
@@ -113,7 +113,7 @@ local function CreateDebuffs(self)
   frame.onlyShowPlayer = cfg.onlyShowPlayer
   frame.PostCreateButton = PostCreateButton
   frame.PostUpdateButton = PostUpdateButton
-  frame:SetSize(CalcFrameSize(cfg.num, cfg.cols, cfg.size, cfg.size, cfg.spacing, 0))
+  L.F.SetSize(frame, CalcFrameSize(cfg.num, cfg.cols, cfg.size, cfg.size, cfg.spacing, 0))
 
   return frame
 end

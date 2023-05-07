@@ -90,7 +90,7 @@ L.F.CreateBackdrop = CreateBackdrop
 -- CreateIcon: create an icon texture.
 local function CreateIcon(self, layer, sublevel, size, point)
   local icon = self:CreateTexture(nil, layer, nil, sublevel)
-  icon:SetSize(unpack(size))
+  L.F.SetSize(icon, unpack(size))
   L.F.SetPoint(icon, self, point)
 
   return icon

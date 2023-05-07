@@ -30,7 +30,7 @@ local function CreateCastBar(self)
   local castbar = CreateFrame("StatusBar", nil, self)
   castbar:SetStatusBarTexture(L.C.textures.statusbar)
   castbar:SetFrameStrata("MEDIUM")
-  castbar:SetSize(unpack(self.cfg.castbar.size))
+  L.F.SetSize(castbar, unpack(self.cfg.castbar.size))
   L.F.SetPoint(castbar, self, self.cfg.castbar.point)
   castbar:SetStatusBarColor(unpack(L.C.colors.castbar.default))
 
@@ -44,7 +44,7 @@ local function CreateCastBar(self)
 
   if self.cfg.castbar.icon and self.cfg.castbar.icon.enabled then
     local i = castbar:CreateTexture(nil, "BACKGROUND", nil, -8)
-    i:SetSize(unpack(self.cfg.castbar.icon.size))
+    L.F.SetSize(i, unpack(self.cfg.castbar.icon.size))
     L.F.SetPoint(i, castbar, self.cfg.castbar.icon.point)
 
     if self.cfg.castbar.icon.texCoord then

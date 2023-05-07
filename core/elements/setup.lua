@@ -22,7 +22,7 @@ local function SetupFrame(self)
   end
 
   self:SetScale(self.cfg.scale)
-  self:SetSize(unpack(self.cfg.size))
+  L.F.SetSize(self, unpack(self.cfg.size))
   L.F.SetPoint(self, nil, self.cfg.point)
 end
 L.F.SetupFrame = SetupFrame
