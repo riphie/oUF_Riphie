@@ -32,15 +32,16 @@ local function PostCreateButton(self, button)
 
   local border = button:CreateTexture(nil, "BACKGROUND")
   border:SetColorTexture(0, 0, 0)
-  border:SetPoint("TOPLEFT", -1, 1)
-  border:SetPoint("BOTTOMRIGHT", 1, -1)
+  L.F.SetPoint(border, "TOPLEFT", -1, 1)
+  L.F.SetPoint(border, "BOTTOMRIGHT", 1, -1)
   button.border = border
 
   button.Icon:SetTexCoord(0.1, 0.9, 0.1, 0.9)
 
   local duration = self.cfg.duration
 
-  button.Cooldown = L.F.CreateText(button, duration.font, duration.size, duration.outline, duration.align, duration.noshadow)
+  button.Cooldown =
+    L.F.CreateText(button, duration.font, duration.size, duration.outline, duration.align, duration.noshadow)
   button.Cooldown:ClearAllPoints()
   L.F.SetPoint(button.Cooldown, button, duration.point)
 
