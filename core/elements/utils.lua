@@ -50,9 +50,9 @@ local function SetPoint(self, relativeTo, point)
   if not b then
     self:SetPoint(a)
   elseif b and type(b) == "string" and not _G[b] then
-    self:SetPoint(a, relativeTo, b, c, d)
+    PixelUtil.SetPoint(self, a, relativeTo, b, c, d, 1, 1)
   else
-    self:SetPoint(a, b, c, d, e)
+    PixelUtil.SetPoint(self, a, b, c, d, e, 1, 1)
   end
 end
 L.F.SetPoint = SetPoint
