@@ -1,6 +1,6 @@
 local A, L = ...
 
--- CreateReadyCheckIndicator: create a ready check indicator icon.t
+-- CreateReadyCheckIndicator: create a ready check indicator icon.
 local function CreateReadyCheckIndicator(self)
   if not self.cfg.readycheck or not self.cfg.readycheck.enabled then
     return

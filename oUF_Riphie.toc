@@ -13,6 +13,7 @@ core\elements\auras.lua
 core\elements\castbar.lua
 core\elements\raidtargetindicator.lua
 core\elements\readycheckindicator.lua
+core\elements\resurrectindicator.lua
 core\elements\setup.lua
 core\tags.lua
 core\style.lua
