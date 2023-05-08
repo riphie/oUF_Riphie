@@ -5,10 +5,12 @@ local function CreateStyle(self)
   L.F.SetupFrame(self)
   L.F.SetupHeader(self)
 
+  self.Range = self.cfg.Range
+
   self.Health = L.F.CreateHealthBar(self)
-  self.HealthPrediction = L.F.CreateHealthPrediction(self)
   L.F.CreateHealthText(self)
   L.F.CreateHealthPercText(self)
+  self.HealthPrediction = L.F.CreateHealthPrediction(self)
   self.Name = L.F.CreateNameText(self)
 
   self.Power = L.F.CreatePowerBar(self)
@@ -20,10 +22,6 @@ local function CreateStyle(self)
   self.Buffs = L.F.CreateBuffs(self)
 
   self.RaidTargetIndicator = L.F.CreateRaidTargetIndicator(self)
-
-  if self.settings.template == "raid" or self.settings.template == "party" then
-    self.Range = { insideAlpha = 1, outsideAlpha = 0.5 }
-    self.ReadyCheckIndicator = L.F.CreateReadyCheckIndicator(self)
-  end
+  self.ReadyCheckIndicator = L.F.CreateReadyCheckIndicator(self)
 end
 L.F.CreateStyle = CreateStyle
