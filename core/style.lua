@@ -5,7 +5,7 @@ local function CreateStyle(self)
   L.F.SetupFrame(self)
   L.F.SetupHeader(self)
 
-  self.Range = self.cfg.Range
+  self.Range = self.cfg.range
 
   self.Health = L.F.CreateHealthBar(self)
   L.F.CreateHealthText(self)
