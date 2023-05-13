@@ -138,7 +138,7 @@ L.F.CreateHealthPercText = CreateHealthPercText
 
 -- CreateHealthPrediction: create frames for health predictions.
 local function CreateHealthPrediction(self)
-  if not self.cfg.absorbbar or not self.cfg.absorbbar.enabled then
+  if not self.cfg.healthbar or not self.cfg.healthbar.absorb or not self.cfg.healthbar.absorb.enabled then
     return
   end
 
