@@ -223,6 +223,65 @@ L.C.boss = {
 
 ### Nameplates
 
+This is for nameplate frames.
+
+```lua
+local A, L = ...
+
+L.C.boss = {
+    -- whether to show this frame
+    enabled = true, -- boolean
+    -- width and height of this frame
+    size = { 180, 15 }, -- { width:number, height:number }
+    -- position of this frame
+    point = { "CENTER" }, -- { anchor1:string, parent:string, anchor2:string, x:number, y:number }
+    -- scale of this frame
+    scale = 1 * UIParent:GetScale(), -- number
+}
+```
+
+You can specify a table of NPC IDs that map to RGB colours for custom nameplate
+colours.
+
+```lua
+local NamePlateCustomUnits = {
+    [194649] = { 1, 0, 1 }, -- Normal Raid Dummy (Valdrakken)
+    [194644] = { 1, 0.2, 0.3 }, -- Dungeoneer's Training Dummy (Valdrakken)
+}
+L.C.NamePlateCustomUnits = NamePlateCustomUnits
+```
+
+You can specify nameplate console variables you want to configure as well.
+
+```lua
+local NamePlateCVars = {
+    nameplateMinScale = 1,
+    nameplateMaxScale = 1,
+
+    nameplateMinScaleDistance = 0,
+    nameplateMaxScaleDistance = 40,
+
+    nameplateGlobalScale = 1,
+    NamePlateHorizontalScale = 1,
+    NamePlateVerticalScale = 1,
+    nameplateSelfScale = 1,
+    nameplateSelectedScale = 1.1,
+    nameplateLargerScale = 1,
+
+    nameplateShowFriendlyNPCs = 0,
+
+    nameplateMinAlpha = 0.6,
+    nameplateMaxAlpha = 0.6,
+
+    nameplateMinAlphaDistance = 0,
+    nameplateMaxAlphaDistance = 40,
+
+    nameplateSelectedAlpha = 1,
+    nameplateOccludedAlphaMult = 0.8,
+}
+L.C.NamePlateCVars = NamePlateCVars
+```
+
 ## Elements
 
 ### Health Bar
