@@ -286,7 +286,71 @@ L.C.NamePlateCVars = NamePlateCVars
 
 ## Elements
 
+These are the elements that can be configured per frame. Some elements cannot be
+disabled, for example the health bar.
+
 ### Health Bar
+
+The health bar frame cannot be disabled. The size and position of the health bar
+match the unit frame.
+
+```lua
+-- inside the frame configuration table
+healthbar = {
+    -- enable/disable colouring by disconnect colour
+    colorDisconnected = false, -- boolean
+    -- enable/disable colouring by reaction colour
+    colorReaction = false, -- boolean
+    -- enable/disable colouring by class colour
+    colorClass = true, -- boolean
+    -- enable/disable colouring by health colour
+    colorHealth = false, -- boolean
+    -- enable/disable colouring by threat status
+    colorThreat = false, -- boolean
+
+    -- health prediction element
+    absorb = {
+        -- enable/disable health prediction and absorbs
+        enabled = true, -- boolean
+    }, 
+
+    -- name configuration
+    name = {
+        enabled = true, -- boolean
+        point = { "CENTER", 0, 0 }, -- { anchor1:string, parent:string, anchor2:string, x:number, y:number }
+        font = "path\\to\\font", -- string
+        size = 12, -- number
+        outline = "OUTLINE", -- string
+        align = "LEFT", -- string
+        noshadow = true, -- boolean
+        tag = "[oUF_RiphieConfig:status]", -- string
+    },
+
+    -- health amount configuration
+    health = {
+        enabled = true, -- boolean
+        point = { "LEFT", 5, 0 }, -- { anchor1:string, parent:string, anchor2:string, x:number, y:number }
+        font = "path\\to\\font", -- string
+        size = 12, -- number
+        outline = "OUTLINE", -- string
+        align = "LEFT", -- string
+        noshadow = true, -- boolean
+        tag = "[oUF_Ripie:health]", -- string
+    },
+
+    -- health percentage configuration
+    healthperc = {
+        enabled = true, -- boolean
+        point = { "RIGHT", -5, 0 }, -- { anchor1:string, parent:string, anchor2:string, x:number, y:number }
+        font = "path\\to\\font", -- string
+        size = 12, -- number
+        outline = "OUTLINE", -- string
+        align = "LEFT", -- string
+        noshadow = true, -- boolean
+        tag = "[perhp]%", -- string
+    },
+}
+```
 
 ### Power Bar
 
