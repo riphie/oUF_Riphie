@@ -18,10 +18,3 @@ local function CreateNamePlateStyle(self)
   L.F.CreateStyle(self)
 end
 L.F.CreateNamePlateStyle = CreateNamePlateStyle
-
-local function NamePlateCallback(self, event, unit)
-  if not self then
-    return
-  end
-end
-L.C.NamePlateCallback = NamePlateCallback
