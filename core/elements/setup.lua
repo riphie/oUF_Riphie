@@ -9,7 +9,7 @@ local function SetupHeader(self)
     return
   end
 
-  self:RegisterForClicks("AnyDown")
+  self:RegisterForClicks "AnyDown"
   self:SetScript("OnEnter", UnitFrame_OnEnter)
   self:SetScript("OnLeave", UnitFrame_OnLeave)
 end

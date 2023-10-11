@@ -29,7 +29,7 @@ local function CreateCastBar(self)
 
   local castbar = CreateFrame("StatusBar", nil, self)
   castbar:SetStatusBarTexture(L.C.textures.statusbar)
-  castbar:SetFrameStrata("MEDIUM")
+  castbar:SetFrameStrata "MEDIUM"
   L.F.SetSize(castbar, unpack(self.cfg.castbar.size))
   L.F.SetPoint(castbar, self, self.cfg.castbar.point)
   castbar:SetStatusBarColor(unpack(L.C.colors.castbar.default))

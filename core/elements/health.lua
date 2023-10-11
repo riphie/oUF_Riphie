@@ -143,46 +143,46 @@ local function CreateHealthPrediction(self)
   end
 
   local myBar = CreateFrame("StatusBar", nil, self.Health)
-  myBar:SetPoint("TOP")
-  myBar:SetPoint("BOTTOM")
+  myBar:SetPoint "TOP"
+  myBar:SetPoint "BOTTOM"
   myBar:SetPoint("LEFT", self.Health:GetStatusBarTexture(), "RIGHT")
   L.F.SetWidth(myBar, 200)
   myBar:SetStatusBarTexture(L.C.textures.statusbar)
   myBar:SetStatusBarColor(unpack(L.C.colors.healthbar.own))
 
   local otherBar = CreateFrame("StatusBar", nil, self.Health)
-  otherBar:SetPoint("TOP")
-  otherBar:SetPoint("BOTTOM")
+  otherBar:SetPoint "TOP"
+  otherBar:SetPoint "BOTTOM"
   otherBar:SetPoint("LEFT", self.Health:GetStatusBarTexture(), "RIGHT")
   L.F.SetWidth(otherBar, 200)
   otherBar:SetStatusBarTexture(L.C.textures.statusbar)
   otherBar:SetStatusBarColor(unpack(L.C.colors.healthbar.other))
 
   local absorbBar = CreateFrame("StatusBar", nil, self.Health)
-  absorbBar:SetPoint("TOP")
-  absorbBar:SetPoint("BOTTOM")
+  absorbBar:SetPoint "TOP"
+  absorbBar:SetPoint "BOTTOM"
   absorbBar:SetPoint("LEFT", self.Health:GetStatusBarTexture(), "RIGHT")
   L.F.SetWidth(absorbBar, 200)
   absorbBar:SetStatusBarTexture(L.C.textures.absorb)
   absorbBar:SetStatusBarColor(unpack(L.C.colors.healthbar.absorb))
 
   local healAbsorbBar = CreateFrame("StatusBar", nil, self.Health)
-  healAbsorbBar:SetPoint("TOP")
-  healAbsorbBar:SetPoint("BOTTOM")
+  healAbsorbBar:SetPoint "TOP"
+  healAbsorbBar:SetPoint "BOTTOM"
   healAbsorbBar:SetPoint("RIGHT", self.Health:GetStatusBarTexture())
   L.F.SetWidth(healAbsorbBar, 200)
   healAbsorbBar:SetStatusBarTexture(L.C.textures.absorb)
   healAbsorbBar:SetReverseFill(true)
 
   local overAbsorb = self.Health:CreateTexture(nil, "OVERLAY")
-  overAbsorb:SetPoint("TOP")
-  overAbsorb:SetPoint("BOTTOM")
+  overAbsorb:SetPoint "TOP"
+  overAbsorb:SetPoint "BOTTOM"
   overAbsorb:SetPoint("LEFT", self.Health, "RIGHT")
   L.F.SetWidth(overAbsorb, 10)
 
   local overHealAbsorb = self.Health:CreateTexture(nil, "OVERLAY")
-  overHealAbsorb:SetPoint("TOP")
-  overHealAbsorb:SetPoint("BOTTOM")
+  overHealAbsorb:SetPoint "TOP"
+  overHealAbsorb:SetPoint "BOTTOM"
   overHealAbsorb:SetPoint("RIGHT", self.Health, "LEFT")
   L.F.SetWidth(overHealAbsorb, 10)
 

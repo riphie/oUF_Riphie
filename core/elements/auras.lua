@@ -10,7 +10,7 @@ local function CreateAuraTimer(self, elapsed)
       self.Cooldown:SetText(L.F.TimerFormat(timeLeft))
     else
       self:SetScript("OnUpdate", nil)
-      self.Cooldown:SetText("")
+      self.Cooldown:SetText ""
     end
     self.elapsed = 0
   end
@@ -28,7 +28,7 @@ end
 
 -- PostCreateButton: callback function called after aura button is created.
 local function PostCreateButton(self, button)
-  button:SetFrameStrata("LOW")
+  button:SetFrameStrata "LOW"
 
   local border = button:CreateTexture(nil, "BACKGROUND")
   border:SetColorTexture(0, 0, 0)
