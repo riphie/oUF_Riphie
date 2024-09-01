@@ -7,7 +7,7 @@ using this library.
 
 ## Frames
 
-### Player 
+### Player
 
 This is your main player unit frame.
 
@@ -312,7 +312,7 @@ healthbar = {
     absorb = {
         -- enable/disable health prediction and absorbs
         enabled = true, -- boolean
-    }, 
+    },
 
     -- name configuration
     name = {
@@ -361,3 +361,5 @@ healthbar = {
 ### Raid Target Indicator
 
 ### Ready Check Indicator
+
+### Range
