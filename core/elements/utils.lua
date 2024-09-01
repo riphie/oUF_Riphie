@@ -77,7 +77,7 @@ L.F.SetPoint = SetPoint
 
 -- SetPoints: set multiple points for the frame, to the relative frame.
 local function SetPoints(self, relativeTo, points)
-  for i, point in next, points do
+  for _, point in next, points do
     L.F.SetPoint(self, relativeTo, point)
   end
 end
