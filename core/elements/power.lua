@@ -22,6 +22,7 @@ local function CreatePowerBar(self)
   L.F.CreateBackdrop(powerbar)
 
   powerbar.colorPower = self.cfg.powerbar.colorPower
+
   powerbar.bg.multiplier = L.C.colors.bgMultiplier
 
   return powerbar
