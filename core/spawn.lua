@@ -60,7 +60,7 @@ if L.F.CreatePartyStyle then
       self:SetWidth(%d)
       self:SetHeight(%d)
       self:GetParent():SetScale(%f)
-    ]]):format(L.C.party.size[1], L.C.party.size[2], L.C.party.scale)
+      ]]):format(L.C.party.size[1], L.C.party.size[2], L.C.party.scale)
     )
     :SetPoint(unpack(L.C.party.point))
 end
