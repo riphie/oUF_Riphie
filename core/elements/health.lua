@@ -1,4 +1,4 @@
-local A, L = ...
+local _, L = ...
 
 -- Up-value used global functions
 local unpack = unpack
@@ -24,13 +24,13 @@ local function PostUpdateColor(self, unit)
 
   local player = UnitIsPlayer(unit)
   local class = select(2, UnitClass(unit))
-  local ccolor = oUF.colors.class[class] or 1, 1, 1
+  local ccolor = oUF.colors.class[class] or { 1, 1, 1 }
 
   local status = UnitThreatSituation("player", unit) or false
-  local tcolor = oUF.colors.threat[status] or 1, 1, 1
+  local tcolor = oUF.colors.threat[status] or { 1, 1, 1 }
 
   local reaction = UnitReaction(unit, "player")
-  local rcolor = oUF.colors.reaction[reaction] or 1, 1, 1
+  local rcolor = oUF.colors.reaction[reaction] or { 1, 1, 1 }
 
   local r, g, b
 

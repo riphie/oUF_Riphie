@@ -1,8 +1,5 @@
-local A, L = ...
+local _, L = ...
 local oUF = L.oUF or oUF
-
--- Up-value used global functions
-local floor = floor
 
 -- oUF_Riphie:health: show s offline/dead status, and the current health points.
 oUF.Tags.Methods["oUF_Riphie:health"] = function(unit)
@@ -14,12 +11,7 @@ oUF.Tags.Methods["oUF_Riphie:health"] = function(unit)
     return "|cff999999Dead|r"
   end
 
-  local hpmin, hpmax = UnitHealth(unit), UnitHealthMax(unit)
-  local hpper = 0
-
-  if hpmax > 0 then
-    hpper = floor(hpmin / hpmax * 100)
-  end
+  local hpmin = UnitHealth(unit)
 
   return L.F.NumberFormat(hpmin)
 end
@@ -33,7 +25,7 @@ if not L.C.tagEvents and type(L.C.tagEvents) ~= "table" then
   return
 end
 
-for key, value in next, L.C.tagMethods do
+for key, _ in next, L.C.tagMethods do
   if L.C.tagMethods[key] and L.C.tagEvents[key] then
     oUF.Tags.Methods[key] = L.C.tagMethods[key]
     oUF.Tags.Events[key] = L.C.tagEvents[key]

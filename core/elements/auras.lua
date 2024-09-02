@@ -1,4 +1,4 @@
-local A, L = ...
+local _, L = ...
 
 -- CreateAuraTimer: creates the timer text for an aura.
 local function CreateAuraTimer(self, elapsed)
@@ -19,7 +19,7 @@ end
 -- CalcFrameSize: calculate the width and height for a frame based on
 -- conditions.
 local function CalcFrameSize(numButtons, numCols, buttonWidth, buttonHeight, buttonMargin, framePadding)
-  local numRows = ceil(numButtons / numCols)
+  local numRows = math.ceil(numButtons / numCols)
   local frameWidth = numCols * buttonWidth + (numCols - 1) * buttonMargin + 2 * framePadding
   local frameHeight = numRows * buttonHeight + (numRows - 1) * buttonMargin + 2 * framePadding
 
