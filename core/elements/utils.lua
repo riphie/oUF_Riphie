@@ -28,17 +28,17 @@ local function TimerFormat(v)
   local day, hour, minute = 86400, 3600, 60
 
   if v >= day then
-    return format("%dd", floor(v / day + 0.5)), v % day
+    return string.format("%dd", math.floor(v / day + 0.5)), v % day
   elseif v >= hour then
-    return format("%dh", floor(v / hour + 0.5)), v % hour
+    return string.format("%dh", math.floor(v / hour + 0.5)), v % hour
   elseif v >= minute then
     if v <= minute * 5 then
-      return format("%d:%02d", floor(v / 60), v % minute), v - floor(v)
+      return string.format("%d:%02d", math.floor(v / 60), v % minute), v - math.floor(v)
     else
-      return format("%dm", floor(v / minute + 0.5)), v % minute
+      return string.format("%dm", math.floor(v / minute + 0.5)), v % minute
     end
   else
-    return format("%d", v + 0.5), v - floor(v)
+    return string.format("%d", v + 0.5), v - math.floor(v)
   end
 end
 L.F.TimerFormat = TimerFormat
