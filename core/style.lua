@@ -23,5 +23,6 @@ local function CreateStyle(self)
 
   self.RaidTargetIndicator = L.F.CreateRaidTargetIndicator(self)
   self.ReadyCheckIndicator = L.F.CreateReadyCheckIndicator(self)
+  self.SummonIndicator = L.F.CreateSummonIndicator(self)
 end
 L.F.CreateStyle = CreateStyle
