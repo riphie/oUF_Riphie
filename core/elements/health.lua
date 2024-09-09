@@ -53,7 +53,6 @@ local function PostUpdateColor(self, unit)
     self.bg:SetVertexColor(r * 0.3, g * 0.3, b * 0.3)
   end
 end
-L.F.UpdateNameplateColor = UpdateNameplateColor
 
 -- CreateHealthBar: create a healthbar frame.
 local function CreateHealthBar(self)
