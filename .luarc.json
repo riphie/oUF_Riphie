@@ -1,3 +1,10 @@
 {
-  "runtime.version": "Lua 5.1"
+  "runtime.version": "Lua 5.1",
+  "diagnostics.globals": [
+    "BackdropTemplateMixin",
+    "CreateFrame",
+    "PixelUtil",
+    "STANDARD_TEXT_FONT",
+    "oUF_RiphieConfig"
+  ]
 }
