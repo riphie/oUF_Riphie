@@ -5,20 +5,24 @@ local unpack = unpack
 
 -- NumberFormat: abbreviate a number into billions, millions, and thousands.
 local function NumberFormat(v)
-  if v > 1E10 then
-    return (string.format("%.1f", v / 1E9)) .. "B"
-  elseif v > 1E9 then
-    return (string.format("%.1f", (v / 1E9) * 10) / 10) .. "B"
-  elseif v > 1E7 then
-    return (string.format("%.1f", v / 1E6)) .. "M"
-  elseif v > 1E6 then
-    return (string.format("%.1f", (v / 1E6) * 10) / 10) .. "M"
-  elseif v > 1E4 then
-    return (string.format("%.1f", (v / 1E3))) .. "K"
-  elseif v > 1E3 then
-    return (string.format("%.0f", (v / 1E3) * 10) / 10) .. "K"
+  local function format(value, unit)
+    return string.format("%.1f", math.floor(value * 10 + 0.5) / 10) .. unit
+  end
+
+  if v >= 1E10 then
+    return format(v / 1E9, "B")
+  elseif v >= 1E9 then
+    return format(v / 1E9, "B")
+  elseif v >= 1E7 then
+    return format(v / 1E6, "M")
+  elseif v >= 1E6 then
+    return format(v / 1E6, "M")
+  elseif v >= 1E4 then
+    return format(v / 1E3, "K")
+  elseif v >= 1E3 then
+    return format(v / 1E3, "K")
   else
-    return v
+    return tostring(v)
   end
 end
 L.F.NumberFormat = NumberFormat
