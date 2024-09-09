@@ -3,6 +3,7 @@
 ## Title: oUF_Riphie
 ## Author: Riphie
 ## RequiredDeps: oUF, oUF_RiphieConfig
+## IconTexture: Interface\AddOns\oUF_Riphie\media\monkey.tga
 
 core\init.lua
 core\elements\utils.lua
