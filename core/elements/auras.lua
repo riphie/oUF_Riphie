@@ -80,6 +80,8 @@ local function CreateBuffs(self)
   frame.initialAnchor = cfg.initialAnchor
   frame["growth-x"] = cfg.growthX
   frame["growth-y"] = cfg.growthY
+  frame["spacing-x"] = cfg.spacingX
+  frame["spacing-y"] = cfg.spacingY
   frame.disableCooldown = cfg.disableCooldown
   frame.filter = cfg.filter
   frame.FilterAura = cfg.FilterAura
@@ -107,6 +109,8 @@ local function CreateDebuffs(self)
   frame.initialAnchor = cfg.initialAnchor
   frame["growth-x"] = cfg.growthX
   frame["growth-y"] = cfg.growthY
+  frame["spacing-x"] = cfg.spacingX
+  frame["spacing-y"] = cfg.spacingY
   frame.disableCooldown = cfg.disableCooldown
   frame.filter = cfg.filter
   frame.FilterAura = cfg.FilterAura
