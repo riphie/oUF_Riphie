@@ -49,19 +49,19 @@ L.F.TimerFormat = TimerFormat
 
 -- SetWidth: set the width for the frame.
 local function SetWidth(self, width)
-  PixelUtil.SetWidth(self, width, 1)
+  PixelUtil.SetWidth(self, width, 0)
 end
 L.F.SetWidth = SetWidth
 
 -- SetHeight: set the height for the frame.
 local function SetHeight(self, height)
-  PixelUtil.SetHeight(self, height, 1)
+  PixelUtil.SetHeight(self, height, 0)
 end
 L.F.SetHeight = SetHeight
 
 -- SetSize: set the size for the frame.
 local function SetSize(self, width, height)
-  PixelUtil.SetSize(self, width, height, 1, 1)
+  PixelUtil.SetSize(self, width, height, 0, 0)
 end
 L.F.SetSize = SetSize
 
