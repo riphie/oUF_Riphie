@@ -12,6 +12,7 @@ core\elements\health.lua
 core\elements\power.lua
 core\elements\auras.lua
 core\elements\castbar.lua
+core\elements\grouproleindicator.lua
 core\elements\raidtargetindicator.lua
 core\elements\readycheckindicator.lua
 core\elements\resurrectindicator.lua

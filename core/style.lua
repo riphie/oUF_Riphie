@@ -21,6 +21,7 @@ local function CreateStyle(self)
   self.Debuffs = L.F.CreateDebuffs(self)
   self.Buffs = L.F.CreateBuffs(self)
 
+  self.GroupRoleIndicator = L.F.CreateGroupRoleIndicator(self)
   self.RaidTargetIndicator = L.F.CreateRaidTargetIndicator(self)
   self.ReadyCheckIndicator = L.F.CreateReadyCheckIndicator(self)
   self.SummonIndicator = L.F.CreateSummonIndicator(self)
