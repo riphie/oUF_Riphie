@@ -82,6 +82,7 @@ local function CreateBuffs(self)
   frame["growth-y"] = cfg.growthY
   frame["spacing-x"] = cfg.spacingX
   frame["spacing-y"] = cfg.spacingY
+  frame.disableMouse = cfg.disableMouse
   frame.disableCooldown = cfg.disableCooldown
   frame.filter = cfg.filter
   frame.FilterAura = cfg.FilterAura
@@ -111,6 +112,7 @@ local function CreateDebuffs(self)
   frame["growth-y"] = cfg.growthY
   frame["spacing-x"] = cfg.spacingX
   frame["spacing-y"] = cfg.spacingY
+  frame.disableMouse = cfg.disableMouse
   frame.disableCooldown = cfg.disableCooldown
   frame.filter = cfg.filter
   frame.FilterAura = cfg.FilterAura
