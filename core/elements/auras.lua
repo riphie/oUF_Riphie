@@ -82,11 +82,7 @@ local function CreateBuffs(self)
   frame["growth-y"] = cfg.growthY
   frame["spacing-x"] = cfg.spacingX
   frame["spacing-y"] = cfg.spacingY
-<<<<<<< HEAD
   frame.disableMouse = cfg.disableMouse
-=======
-  -- TODO: disableMouse
->>>>>>> d09a3f3 (Update LICENSE)
   frame.disableCooldown = cfg.disableCooldown
   frame.filter = cfg.filter
   frame.FilterAura = cfg.FilterAura
