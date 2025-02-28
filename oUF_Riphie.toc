@@ -1,7 +1,7 @@
 ## Interface: 110200
 
 ## Author: Riphie
-## Title: Riphie oUF
+## Title: oUF Riphie
 ## RequiredDeps: oUF, oUF_RiphieConfig
 ## IconTexture: Interface\AddOns\oUF_Riphie\media\monkey.tga
 
